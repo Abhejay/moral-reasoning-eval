@@ -1,0 +1,20 @@
+experiment:
+  max_tokens: 1000
+  max_retries: 3
+  retry_delay_seconds: 5
+models:
+  claude:
+    name: "claude-3-opus-20240229"
+  gpt:
+    name: "gpt-4"
+  deepseek:
+    name: "deepseek-coder"
+  gemini:
+    name: "gemini-pro"
+  llama:
+    name: "llama-70b"
+input:
+  questionnaires_dir: "data/questionnaires"
+output:
+  response_dir: "data/responses"
+  evaluation_dir: "data/evaluations"
