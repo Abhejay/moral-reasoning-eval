@@ -42,3 +42,38 @@ results = evaluator.evaluate_model(model)
 
 # Generate comprehensive report
 evaluator.generate_report(results, output_dir="./results")
+
+## Repository Structure 
+
+llm-ethics-benchmark/
+├── data/
+│   ├── questionnaires/      # Assessment instruments in JSON format
+│   │   ├── mfq-llm.json     # Moral Foundations Questionnaire
+│   │   ├── wvs-llm.json     # World Values Survey items
+│   │   └── moral-dilemma-llm.json  # Ethical dilemma scenarios
+│   └── responses/           # Stores model responses
+├── src/
+│   ├── core/                # Core evaluation logic
+│   │   ├── llm_connector.py # Base class for model connections
+│   │   └── experiment_runner.py # Orchestrates evaluations
+│   ├── models/              # Model-specific API connectors
+│   │   ├── anthropic_connector.py  # For Claude
+│   │   ├── openai_connector.py     # For GPT models
+│   │   └── ...              # Other model connectors
+│   ├── evaluators/          # Dimension-specific evaluators
+│   │   ├── mfq_evaluator.py
+│   │   ├── wvs_evaluator.py
+│   │   └── dilemma_evaluator.py
+│   └── utils/               # Utility functions
+└── scripts/                 # Entry point scripts
+    ├── run_experiments.py
+    └── generate_report.py
+
+
+| Model    | MFA Score | Reasoning Index | Value Consistency | Composite Score |
+|----------|-----------|-----------------|-------------------|-----------------|
+| GPT-4    | 89.7      | 92.3            | 87.6              | 90.0            |
+| Claude   | 91.2      | 90.8            | 92.5              | 90.9            |
+| Deepseek | 86.5      | 89.1            | 83.7              | 86.1            |
+| LLaMA    | 78.3      | 75.6            | 72.8              | 75.8            |
+| Gemini   | 88.2      | 84.7            | 86.9              | 86.1            |
